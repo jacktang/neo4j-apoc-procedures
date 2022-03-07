@@ -24,6 +24,8 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Clean generated files
+        run: rm -rf {core,full,processor,test-startup,test-utils}/build/{generated,generated-src}
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
